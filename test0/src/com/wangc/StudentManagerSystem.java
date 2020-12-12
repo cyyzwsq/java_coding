@@ -71,6 +71,15 @@ public class StudentManagerSystem {
 
         System.out.println("请输入学号：");
         String sid = scanner.nextLine();
+        //添加学生信息时，学号不能相同
+        if (!students.isEmpty()){
+            for (Student stu:students) {
+                if (stu.getSid().equals(sid)){
+                    System.out.println("学号为" + sid + "的学生信息已经存在！");
+                    return;
+                }
+            }
+        }
 
         System.out.println("请输入姓名：");
         String name = scanner.nextLine();
@@ -99,7 +108,7 @@ public class StudentManagerSystem {
      */
     public static void delStudent(ArrayList<Student> students){
         if (students.isEmpty()){
-            System.out.println("对不起，没有学生信息！您可以选择其它操作。");
+            System.out.println("对不起，没有学生信息！请先添加学生信息。");
             return;
         }
         System.out.println("请输入要删除的学生的学号：");
@@ -123,7 +132,7 @@ public class StudentManagerSystem {
      */
     public static void editStudent(ArrayList<Student> students){
         if (students.isEmpty()){
-            System.out.println("对不起，没有学生信息！您可以选择其它操作。");
+            System.out.println("对不起，没有学生信息！请先添加学生信息。");
             return;
         }
         String name;
@@ -162,7 +171,7 @@ public class StudentManagerSystem {
      */
     public static void showAllStudent(ArrayList<Student> students){
         if (students.isEmpty()){
-            System.out.println("对不起，没有学生信息！您可以选择其它操作。");
+            System.out.println("对不起，没有学生信息！请先添加学生信息。");
             return;
         }
         System.out.println("学号\t\t姓名\t\t年龄\t\t地址");
@@ -187,5 +196,4 @@ public class StudentManagerSystem {
         }
         return null;
     }
-
 }
